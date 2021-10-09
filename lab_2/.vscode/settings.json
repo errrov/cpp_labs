@@ -1,0 +1,7 @@
+{
+    "files.autoSave": "afterDelay",
+    "code-runner.runInTerminal": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Material Theme Darker High Contrast"
+}
