@@ -1,4 +1,3 @@
-
 #include <stdexcept>
 #pragma once
 namespace Vector {

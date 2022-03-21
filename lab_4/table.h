@@ -1,7 +1,6 @@
-#include "classes.h"
+#include "Product.h"
+#include "vector.h"
 #pragma once
-
-using namespace shop;
 class Table {
     private:
         int size;
@@ -20,11 +19,6 @@ class Table {
         }
 
         void add_product(Product *prod) {
-            for(int i=0; i<size; i++) {
-                if (prod -> getID() < table[i] ->getID()) {
-
-                }
-            }
             table.push(prod);
 
             size++;
@@ -33,7 +27,6 @@ class Table {
         Product *find_by_id(std::string ID) {
             for(int i = 0; i < size; i++) {
                 if (table[i] -> getID() == ID) {
-                std::cout << "Success!" << std::endl;
                     return table[i];
                 } 
             }
@@ -44,8 +37,8 @@ class Table {
             std::cout << table[index] -> getID() << std::endl;
         }
 
-        void delete_product(std::string ID) {
-            table.delete_element(find_by_id(ID));
+        void delete_product(Product *prod) {
+            table.delete_element(prod);
             size--;
         }
 
@@ -55,3 +48,37 @@ class Table {
             }
         }
 };
+
+namespace input {
+    template <class T>
+    double getNum(T &a, const char* message = "") {
+        std::cout << message;
+        std::cin >> a;
+        while (std::cin.fail()) {
+            if (std::cin.eof()) {
+                std::cout << "EOF !";
+            }
+            std::cout << "Enter valid value." << std::endl;
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            std::cin >> a;          
+        }
+        return a;
+}
+    template <class T>
+    std::string getString(T &a, const char* message = "") {
+        std::cout << message;
+        std::cin >> a;
+        while (std::cin.fail()) {
+            if (std::cin.eof()) {
+                std::cout << "EOF !";
+            }
+            std::cout << "Enter valid value: ";
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            std::cin >> a;          
+        }
+        return a;
+    }
+}
+
