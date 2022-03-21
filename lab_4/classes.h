@@ -1,6 +1,8 @@
 #include <iostream>
-#include <vector>
+#include <algorithm>
 #include "vector.h"
+#include "template.h"
+#pragma once
 
 namespace shop {
     
@@ -34,7 +36,22 @@ namespace shop {
         //[[nodiscard]] std::get_product_info ???
         //[[nodiscard]] std::string get_product_type {}; 
         std::size_t getProductQuantity() {return quantity_in_warehouse;};
+
+        bool operator<(const Product& p) const
+        {
+            return ID < p.ID;
+        }
     };
+
+    struct SortProductPointers
+    {
+    
+    bool operator()(const Product* lhs, const Product* rhs) const
+    {
+        return *lhs < *rhs;
+    }
+};
+
 
     class Wholesale_product : public Product {
         private:
@@ -127,6 +144,7 @@ namespace shop {
 
             void add_product(Product *prod) {
                 table.push(prod);
+
                 size++;
             }
 

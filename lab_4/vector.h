@@ -1,4 +1,6 @@
+
 #include <stdexcept>
+#pragma once
 namespace Vector {
 
     template<class T> 
@@ -7,6 +9,7 @@ namespace Vector {
             T *arr;
             int current;
             int capacity;
+            int current_size;
 
         public:
             NewVector() {
@@ -15,7 +18,10 @@ namespace Vector {
                 current =0;
             }
 
+            NewVector(const NewVector<T> &iterator) = default; 
+
             void push (T data) {
+               
                 if(current == capacity) {
                     T* tmp = new T[2 * capacity];
                     for (int i=0; i < capacity; i++) {
@@ -25,6 +31,7 @@ namespace Vector {
                     capacity *= 2;
                     arr = tmp;
                 }
+
                 arr[current] = data;
                 current++;                
             }
@@ -35,6 +42,8 @@ namespace Vector {
 
                 }
             }
+            
+            
 
             void clear () {
                 delete[] arr;
@@ -44,7 +53,7 @@ namespace Vector {
             }
 
             int findIndex(T &s) {
-                for (int i = 0; i < capacity; i++) {
+                for (int i = 0; i < current; i++) {
                     if (arr[i] == s) {
                         return i;
                     }
@@ -52,7 +61,7 @@ namespace Vector {
                 return -1;
             }
 
-            void delete_element(T elem) {
+            void delete_element(T &elem) {
                 int id;
                 id = findIndex(elem);
                 if (id == -1) {
@@ -62,7 +71,7 @@ namespace Vector {
                 for (int i = 0; i < current; i++) {
                     if (i < id) {
                         tmp[i] = arr[i];
-                    } else {
+                    } else if (i>id){
                         tmp[i-1] = arr[i];
                     }
                 }
@@ -80,7 +89,19 @@ namespace Vector {
 
             void PrintVector();
 
+            typedef NewVector<T> Iterator;
+            Iterator begin() {return Iterator(&arr[0]);};
+            Iterator end();
+
+
     };
+
+
+
+
+
+
+
     
     
     
