@@ -14,3 +14,6 @@ void Wholesale_product::change_cost(std::size_t cost) {
 void Wholesale_product::change_quantity(std::size_t quantity) {
     wholesale_size = quantity;
 };
+
+
+

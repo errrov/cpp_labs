@@ -13,7 +13,6 @@ namespace dialogue_menu{
 
     void get_passengers_number();
 
-
     void reserve_seats();
 
     void reserved_seats_in_carriage();

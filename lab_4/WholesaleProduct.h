@@ -14,7 +14,7 @@ class Wholesale_product : public Product {
             unit_cost = 0;
         }
 
-        Wholesale_product(int size, int cost, std::string id, std::string name, std::string country) : Product(std::move(id), std::move(name), std::move(country)) {
+        Wholesale_product(int size, int cost, std::string id, std::string name, std::string country, int quantity) : Product(std::move(id), std::move(name), std::move(country),quantity) {
             if (size >=0) {
                 wholesale_size = size;
             } else {
@@ -25,6 +25,8 @@ class Wholesale_product : public Product {
             } else { 
                 unit_cost = 0 ;
             }
+            classification = "Wholesale";
+            Product::quantity = wholesale_size;
         }
 
         int price(){return unit_cost;};
@@ -32,8 +34,8 @@ class Wholesale_product : public Product {
         int make_a_sale(std::size_t quantity);
         void add_to_Warehouse(std::size_t extra_quantity);
         void change_cost(std::size_t cost);
-        void get_product_info(){std::cout << "ID: " << ID << " Product name: " << product_name  << " County: " << manufactured_country << " Quantity: " << wholesale_size << std::endl;};
-
+        virtual void get_product_info(){std::cout << "ID: " << ID << " Product name: " << product_name  << " County: " << manufactured_country << " Quantity: " << Product::quantity << " Wholesale size: " << wholesale_size << std::endl;};
+        std::string get_product_type() {return "Wholesale";};
         void change_quantity(std::size_t wholesale_size);
 
     //void operator=(Retail_product prod);

@@ -6,20 +6,17 @@ class Retail_product : public Product {
     private:
         std::size_t unit_cost;
         std::size_t allowance;
-        std::size_t quantity;
-
     public:
 
         Retail_product() : Product() {
 
             allowance = 0;
             unit_cost = 0;
-            quantity = 0;
         }
 
-        Retail_product(int allowance, int cost, int size, std::string id, std::string name, std::string country) : Product(std::move(id), std::move(name), std::move(country)) {
+        Retail_product(int allow, int cost, int quant, std::string id, std::string name, std::string country) : Product(std::move(id), std::move(name), std::move(country),quant) {
             if (allowance >=0) {
-                allowance = allowance;
+                allowance = allow;
             } else {
                 allowance = 0;
             }
@@ -28,11 +25,12 @@ class Retail_product : public Product {
             } else { 
                 unit_cost = 0 ;
             }
-            if (size >=0) {
-                quantity = size;
+            if (quant >=0) {
+                Product::quantity = quant;
             } else {
-                quantity = 0;
+                Product::quantity = 0;
             }
+            classification = "Retail";
         }
 
         int make_a_sale(std::size_t quantity);

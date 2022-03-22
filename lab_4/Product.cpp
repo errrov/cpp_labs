@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Product.h"
 
-Product* Product::createProduct() {
-    string stri;
-    //input::getNum(stri,"ABcd: ");
+void Product::changeQuantity(int quant) {
+    quantity = quant;
+    
 }
