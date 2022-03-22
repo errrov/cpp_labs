@@ -97,21 +97,43 @@ namespace dialogue_menu{
                 input::getNum(tmp1, "Enter quantity of product to sell: ");
                 if(Shop_table.find_retail_by_id(tmp3) != nullptr) {
                     Shop_table.find_retail_by_id(tmp3)->get_product_info();
-                    
-                    if (Shop_table.find_retail_by_id(tmp3)->make_a_sale(tmp1)==1){continue;}
-                    std::cout << "Money: " << Shop_table.find_retail_by_id(tmp3)->make_a_sale(tmp1) << std::endl;
+                    tmpz = Shop_table.find_retail_by_id(tmp3)->make_a_sale(tmp1);
+                    if (tmpz==1){continue;}
+                    std::cout << "Money: " << tmpz << std::endl;
                     continue;
                 }
                 std::cout << "No such ID " << std::endl;
                 continue;
 
             case 6:
+                input::getString(tmp3, "Etner ID of product: ");
+                input::getNum(tmp1, "Enter quantity of product to sell: ");
+                if(Shop_table.find_wholesale_by_id(tmp3) != nullptr) {
+                    if(Shop_table.find_wholesale_by_id(tmp3)->make_a_sale(tmp1)==1){continue;}
+                    std::cout << "Monee: " << Shop_table.find_wholesale_by_id(tmp3)->make_a_sale(tmp1) << std::endl;
+                    continue;
+                }
+                std::cout << "No such ID " << std::endl;
 
             case 7:
                 input::getString(tmp3, "Enter ID of product: ");
                 input::getNum(tmp1, "Enter new quantity: ");
                 Shop_table.find_product_by_id(tmp3)->changeQuantity(tmp1);
+                continue;
 
+            case 8:
+                input::getString(tmp3, "Enter ID of product: ");
+                input::getNum(tmp1, "Enter new price! ");
+                if(Shop_table.find_product_by_id(tmp3) != nullptr){
+                std::cout << Shop_table.find_product_by_id(tmp3)->getClassification() << " ";
+                if (Shop_table.find_product_by_id(tmp3)->getClassification() == "Wholesale") {
+                    Shop_table.find_wholesale_by_id(tmp3)->changePrice(tmp1);
+                }
+                if (Shop_table.find_product_by_id(tmp3)->getClassification() == "Retail") {
+                    Shop_table.find_retail_by_id(tmp3)->changePrice(tmp1);
+                }
+                }
+                continue;
 
             case 13:
                 Shop_table.print_table();

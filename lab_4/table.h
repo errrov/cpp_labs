@@ -41,7 +41,6 @@ class Table {
         Product *find_product_by_id(std::string ID) {
             for(int i = 0; i < size; i++) {
                 if (table[i] -> getID() == ID) {
-                    std::cout << "Success! \n";
                     return table[i];
                 } 
             }
@@ -52,7 +51,6 @@ class Table {
         Wholesale_product *find_wholesale_by_id(std::string ID){
             for(int i = 0; i < size; i++) {
                 if (table_wholesale[i] -> getID() == ID) {
-                    std::cout << "Success! \n";
                     return table_wholesale[i];
                 } 
             }
@@ -63,7 +61,6 @@ class Table {
         Retail_product *find_retail_by_id(std::string ID){
             for(int i = 0; i < size; i++) {
                 if (table_retail[i] -> getID() == ID) {
-                    std::cout << "Success! \n";
                     return table_retail[i];
                 } 
             }

@@ -2,13 +2,14 @@
 #include "RetailProduct.h"
 
 int Retail_product::make_a_sale(std::size_t quant) {
-    if(quant > quantity) {
+    if(quant > Product::quantity) {
         std::cout << "You want to sell more than expected! " << std::endl;
         return 1;
     }
-    int profit = allowance * unit_cost * quant;
-    quantity = quantity - quant;
-    return profit;
+    else{
+        int profit = allowance * unit_cost * quant;
+        Product::quantity = Product::quantity - quant;
+    return profit;}
 }
 
 void Retail_product::add_to_Warehouse(std::size_t number) {

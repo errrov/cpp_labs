@@ -31,7 +31,7 @@ class Product {
     void changeQuantity(int quant);
     Product* createProduct();
     std::string getClassification() {return classification;};
-    virtual void get_product_info() {std::cout << "ID: " << ID << "Product name: " << product_name << "Manufacture_country: " << manufactured_country << std::endl;};
+    virtual void get_product_info() {std::cout << "ID: " << ID << "Product name: " << product_name << "Manufacture_country: " << manufactured_country << "Price" << std::endl;};
     //[[nodiscard]] std::string get_product_type {};
     bool operator<(const Product& p) const
     {

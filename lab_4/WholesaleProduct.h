@@ -33,7 +33,7 @@ class Wholesale_product : public Product {
         int quantity(){return wholesale_size;};
         int make_a_sale(std::size_t quantity);
         void add_to_Warehouse(std::size_t extra_quantity);
-        void change_cost(std::size_t cost);
+        void changePrice(int new_price) {unit_cost = new_price;};
         virtual void get_product_info(){std::cout << "ID: " << ID << " Product name: " << product_name  << " County: " << manufactured_country << " Quantity: " << Product::quantity << " Wholesale size: " << wholesale_size << std::endl;};
         std::string get_product_type() {return "Wholesale";};
         void change_quantity(std::size_t wholesale_size);

@@ -34,6 +34,8 @@ class Retail_product : public Product {
         }
 
         int make_a_sale(std::size_t quantity);
+        void changePrice(int new_price) {unit_cost = new_price;};
+
         void add_to_Warehouse(std::size_t extra_quantity);
         void change_cost(std::size_t cost);
         void get_product_info(){std::cout << "ID: " << ID << " Product name: " << product_name  << " County: " << manufactured_country << " Quantity: " << quantity << std::endl;};
